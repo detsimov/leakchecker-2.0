@@ -26,6 +26,7 @@ object Libs {
         const val coil = "1.3.1"
         const val koin = "3.1.3"
         const val coroutinesAndroid = "1.5.1"
+        const val orbit = "4.3.0"
     }
 
     const val coreKtx = "androidx.core:core-ktx:${Version.coreKtx}"
@@ -46,7 +47,9 @@ object Libs {
     const val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Version.coroutinesAndroid}"
     const val koin = "io.insert-koin:koin-core:${Version.koin}"
     const val koinAndroid = "io.insert-koin:koin-android:${Version.koin}"
+    const val koinAndroidCompose = "io.insert-koin:koin-androidx-compose:${Version.koin}"
     const val koinViewModel = "io.insert-koin:koin-android-viewmodel:${Version.koin}"
+    const val orbitAndroid = "org.orbit-mvi:orbit-viewmodel:${Version.orbit}"
 
 
     fun DependencyHandler.addComposeDependencies() {

@@ -6,13 +6,13 @@ plugins {
 }
 
 android {
-    compileSdkVersion(31)
+    compileSdkVersion(AndroidSdk.compile)
     defaultConfig {
         applicationId = "com.detsimov.leakchecker"
-        minSdkVersion(23)
-        targetSdkVersion(31)
-        versionCode = 1
-        versionName = "1.0"
+        minSdkVersion(AndroidSdk.min)
+        targetSdkVersion(AndroidSdk.target)
+        versionCode = App.versionCode
+        versionName = App.versionName
     }
     buildFeatures {
         compose = true
@@ -46,5 +46,7 @@ dependencies {
     implementation(Libs.lifecycleRuntime)
     implementation(Libs.koin)
     implementation(Libs.koinAndroid)
+    implementation(Libs.koinAndroidCompose)
+    implementation(Libs.orbitAndroid)
     addComposeDependencies()
 }
