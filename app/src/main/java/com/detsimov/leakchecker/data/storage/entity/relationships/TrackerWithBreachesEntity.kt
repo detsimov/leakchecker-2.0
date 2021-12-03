@@ -20,6 +20,7 @@ data class TrackerWithBreachesEntity(
 
         @JvmStatic
         fun TrackerWithBreachesEntity.toTrackerStatusModel() = TrackerStatusModel(
+            tracker.id,
             tracker.email,
             TrackerDataType.EMAIL,
             breaches.count(),

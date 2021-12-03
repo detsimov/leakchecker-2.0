@@ -30,7 +30,7 @@ private fun TrackerStatus_Preview() {
     LeakCheckerTheme {
         TrackerStatus(
             Modifier.width(200.dp),
-            model = TrackerStatusModel("test@mail.ru", TrackerDataType.EMAIL, 888, 22)
+            model = TrackerStatusModel(0,"test@mail.ru", TrackerDataType.EMAIL, 888, 22)
         )
     }
 }

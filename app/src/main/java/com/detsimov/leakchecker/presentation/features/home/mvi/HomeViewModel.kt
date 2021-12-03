@@ -1,14 +1,12 @@
 package com.detsimov.leakchecker.presentation.features.home.mvi
 
-import android.util.Log
-import androidx.lifecycle.viewModelScope
 import com.detsimov.leakchecker.domain.interactors.i.BreachInteractor
 import com.detsimov.leakchecker.domain.interactors.i.TrackerInteractor
 import com.detsimov.leakchecker.presentation.base.mvi.MviViewModel
 import com.detsimov.leakchecker.presentation.base.mvi.bootstrap
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 import org.orbitmvi.orbit.Container
+import org.orbitmvi.orbit.syntax.simple.intent
 import org.orbitmvi.orbit.syntax.simple.reduce
 import org.orbitmvi.orbit.viewmodel.container
 
@@ -24,6 +22,19 @@ class HomeViewModel(
         breachesInfoBootstrap()
     }
 
+    fun addTracker(email: String) = intent {
+        trackerInteractor.add(email)
+        reduce { state.copy(isTrackerCreatorDialogShowing = false) }
+    }
+
+    fun openTrackerCreatorDialog() = intent {
+        reduce { state.copy(isTrackerCreatorDialogShowing = true) }
+    }
+
+    fun closeTrackerCreatorDialog() = intent {
+        reduce { state.copy(isTrackerCreatorDialogShowing = false) }
+    }
+
     private fun trackersBootstrap() = bootstrap {
         trackerInteractor.statusesFlow.collect {
             reduce { state.copy(isTrackersLoading = false, trackers = it) }
@@ -32,7 +43,7 @@ class HomeViewModel(
 
     private fun breachesInfoBootstrap() = bootstrap {
         breachInteractor.breachesInfoFlow.collect {
-            reduce { state.copy(isBreachesInfoLoading = false, breachesInfo = it) }
+            reduce { state.copy(breachesInfo = it) }
         }
     }
 }

@@ -19,7 +19,7 @@ object Libs {
         const val coreKtx = "1.3.2"
         const val appcompat = "1.2.0"
         const val material = "1.3.0"
-        const val compose = "1.1.0-beta02"
+        const val compose = "1.1.0-beta03"
         const val composeActivity = "1.3.1"
         const val composeNavigation = "2.4.0-beta02"
         const val lifecycleRuntime = "2.3.1"

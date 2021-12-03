@@ -1,9 +1,12 @@
-package com.detsimov.leakchecker.presentation.features.main
+package com.detsimov.leakchecker.presentation.features.main.ui
 
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavHostController
@@ -17,6 +20,13 @@ fun MainContent(
     navController: NavHostController,
     onNavigationItemClicked: (NavigationItem) -> Unit
 ) = Scaffold(
+    content = { innerPadding ->
+        Box(modifier = Modifier.padding(innerPadding)) {
+            NavHost(navController, startDestination = NavigationItem.HOME.baseRoute) {
+                bottomNavigationGraph()
+            }
+        }
+    },
     bottomBar = {
         val items = remember { NavigationItem.values() }
         val navBackStackEntry by navController.currentBackStackEntryAsState()
@@ -32,8 +42,4 @@ fun MainContent(
             }
         }
     }
-) {
-    NavHost(navController, startDestination = NavigationItem.HOME.baseRoute) {
-        bottomNavigationGraph()
-    }
-}
+)

@@ -11,6 +11,11 @@ import org.koin.androidx.compose.getViewModel
 fun HomeScreen() {
     with(getViewModel<HomeViewModel>()) {
         val state by container.stateFlow.collectAsState()
-        HomeContent(state)
+        HomeContent(
+            state = state,
+            onOpenTrackerCreatorDialog = ::openTrackerCreatorDialog,
+            onCloseTrackerCreatorDialog = ::closeTrackerCreatorDialog,
+            onAddTracker = ::addTracker
+        )
     }
 }

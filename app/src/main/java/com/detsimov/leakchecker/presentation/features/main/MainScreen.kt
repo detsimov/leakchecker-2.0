@@ -5,6 +5,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import com.detsimov.leakchecker.presentation.features.main.mvi.MainSideEffect
 import com.detsimov.leakchecker.presentation.features.main.mvi.MainViewModel
+import com.detsimov.leakchecker.presentation.features.main.ui.MainContent
 import com.detsimov.leakchecker.presentation.features.navigation.BottomNavigation
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch

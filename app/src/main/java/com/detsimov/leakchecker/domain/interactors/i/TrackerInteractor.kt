@@ -7,4 +7,6 @@ import kotlinx.coroutines.flow.Flow
 interface TrackerInteractor {
 
     val statusesFlow: Flow<List<TrackerStatusModel>>
+
+    suspend fun add(email: String)
 }
