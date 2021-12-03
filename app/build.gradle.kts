@@ -3,6 +3,8 @@ import Libs.addComposeDependencies
 plugins {
     id("com.android.application")
     kotlin("android")
+    kotlin("plugin.serialization")
+    kotlin("kapt")
 }
 
 android {
@@ -48,5 +50,13 @@ dependencies {
     implementation(Libs.koinAndroid)
     implementation(Libs.koinAndroidCompose)
     implementation(Libs.orbitAndroid)
+    implementation(Libs.result)
+    implementation(Libs.ktor)
+    implementation(Libs.ktorAndroid)
+    implementation(Libs.ktorLogging)
+    implementation(Libs.ktorSerialization)
+    implementation(Libs.room)
+    implementation(Libs.roomKtx)
+    kapt(Libs.roomCompiler)
     addComposeDependencies()
 }

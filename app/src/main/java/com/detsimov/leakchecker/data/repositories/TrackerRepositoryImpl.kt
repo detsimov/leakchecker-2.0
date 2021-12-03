@@ -1,23 +1,21 @@
 package com.detsimov.leakchecker.data.repositories
 
-import com.detsimov.leakchecker.domain.models.BreachesInfoModel
-import com.detsimov.leakchecker.domain.models.TrackerDataType
+import com.detsimov.leakchecker.common.mapList
+import com.detsimov.leakchecker.data.storage.AppDatabase
+import com.detsimov.leakchecker.data.storage.entity.TrackerEntity
+import com.detsimov.leakchecker.data.storage.entity.relationships.TrackerWithBreachesEntity.Companion.toTrackerStatusModel
 import com.detsimov.leakchecker.domain.models.TrackerStatusModel
 import com.detsimov.leakchecker.domain.repositories.TrackerRepository
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
 
-class TrackerRepositoryImpl : TrackerRepository {
+class TrackerRepositoryImpl(appDatabase: AppDatabase) : TrackerRepository {
 
-    override val statusesFlow: Flow<List<TrackerStatusModel>> = MutableStateFlow(
-        listOf(
-            TrackerStatusModel("test1@mail.ru", TrackerDataType.EMAIL, 22, 15),
-            TrackerStatusModel("test2@mail.ru", TrackerDataType.EMAIL, 822, 0),
-            TrackerStatusModel("test3@mail.ru", TrackerDataType.EMAIL, 81, 22),
-            TrackerStatusModel("test4@mail.ru", TrackerDataType.EMAIL, 21321, 0),
-            TrackerStatusModel("test5@mail.ru", TrackerDataType.EMAIL, 33, 0),
-        )
-    )
+    private val trackerDao = appDatabase.trackerDao()
 
-    override val breachesInfoFlow: Flow<BreachesInfoModel> = MutableStateFlow(BreachesInfoModel(5, 1002))
+    override val statusesFlow: Flow<List<TrackerStatusModel>> = trackerDao.getTrackersWithBreaches()
+        .mapList { it.toTrackerStatusModel() }
+
+    override suspend fun add(data: String) {
+        trackerDao.add(TrackerEntity(email = data))
+    }
 }

@@ -12,7 +12,4 @@ class TrackerInteractorImpl(
 
     override val statusesFlow: Flow<List<TrackerStatusModel>>
         get() = trackerRepository.statusesFlow
-
-    override val breachesInfoFlow: Flow<BreachesInfoModel>
-        get() = trackerRepository.breachesInfoFlow
 }

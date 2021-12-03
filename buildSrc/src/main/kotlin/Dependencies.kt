@@ -27,6 +27,10 @@ object Libs {
         const val koin = "3.1.3"
         const val coroutinesAndroid = "1.5.1"
         const val orbit = "4.3.0"
+        const val result = "1.1.13"
+        const val ktor = "1.6.5"
+        const val kotlinSerialization = "1.3.1"
+        const val room = "2.4.0-beta02"
     }
 
     const val coreKtx = "androidx.core:core-ktx:${Version.coreKtx}"
@@ -50,7 +54,15 @@ object Libs {
     const val koinAndroidCompose = "io.insert-koin:koin-androidx-compose:${Version.koin}"
     const val koinViewModel = "io.insert-koin:koin-android-viewmodel:${Version.koin}"
     const val orbitAndroid = "org.orbit-mvi:orbit-viewmodel:${Version.orbit}"
-
+    const val result = "com.michael-bull.kotlin-result:kotlin-result:${Version.result}"
+    const val ktor = "io.ktor:ktor-client-core:${Version.ktor}"
+    const val ktorAndroid = "io.ktor:ktor-client-android:${Version.ktor}"
+    const val ktorSerialization = "io.ktor:ktor-client-serialization:${Version.ktor}"
+    const val ktorLogging = "io.ktor:ktor-client-logging:${Version.ktor}"
+    const val kotlinSerialization = "org.jetbrains.kotlinx:kotlinx-serialization-json:${Version.kotlinSerialization}"
+    const val room = "androidx.room:room-runtime:${Version.room}"
+    const val roomKtx = "androidx.room:room-ktx:${Version.room}"
+    const val roomCompiler = "androidx.room:room-compiler:${Version.room}"
 
     fun DependencyHandler.addComposeDependencies() {
         impl(composeUi)
@@ -74,5 +86,6 @@ object Plugin {
     }
 
     const val kotlinGradle = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+    const val kotlinSerialization = "org.jetbrains.kotlin:kotlin-serialization:$kotlinVersion"
     const val androidGradle = "com.android.tools.build:gradle:${Version.androidGradle}"
 }

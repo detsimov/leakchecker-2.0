@@ -7,6 +7,4 @@ import kotlinx.coroutines.flow.Flow
 interface TrackerInteractor {
 
     val statusesFlow: Flow<List<TrackerStatusModel>>
-
-    val breachesInfoFlow: Flow<BreachesInfoModel>
 }

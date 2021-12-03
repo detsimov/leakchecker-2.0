@@ -14,7 +14,6 @@ class LeakCheckerApplication : Application() {
         super.onCreate()
         startKoin {
             androidContext(this@LeakCheckerApplication)
-            androidLogger()
             modules(dataModule, domainModule, presentationModule)
         }
     }

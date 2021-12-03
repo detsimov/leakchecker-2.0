@@ -8,5 +8,5 @@ interface TrackerRepository {
 
     val statusesFlow: Flow<List<TrackerStatusModel>>
 
-    val breachesInfoFlow: Flow<BreachesInfoModel>
+    suspend fun add(data: String)
 }
